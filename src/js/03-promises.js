@@ -18,12 +18,12 @@ function onFormSubmit(e) {
   const step = Number(refs.delayStep.value);
 
   for (let i = 1; i <= position; i += 1) {
-    createPromise(position, delay)
-      .then(({ i, delay }) => {
-        console.log(`✅ Fulfilled promise ${i} in ${delay}ms`);
+    createPromise(i, delay)
+      .then(({ position, delay }) => {
+        console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
       })
       .catch(({ position, delay }) => {
-        console.log(`❌ Rejected promise ${i} in ${delay}ms`);
+        console.log(`❌ Rejected promise ${position} in ${delay}ms`);
       });
     delay += step;
   }
